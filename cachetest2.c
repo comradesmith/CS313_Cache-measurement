@@ -70,7 +70,7 @@ int main (int argc, char *argv[])
 		a[i] = b[i] = i;
 	}	
 
-	for(i = 0; i < N; i++) {
+	for(i = 0; i < 3*N; i++) {
 		x = rand() % N;
 		y = rand() % N;
 		b[x] = b[x] ^ b[y];

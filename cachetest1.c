@@ -70,15 +70,6 @@ int main (int argc, char *argv[])
 		a[i] = b[i] = i;
 	}	
 
-	for(i = 0; i < N; i++) {
-		x = rand() % N;
-		y = rand() % N;
-		b[x] = b[x] ^ b[y];
-		b[y] = b[x] ^ b[y];
-		b[x] = b[y] ^ b[x];
-
-	}
-
 
 	t1 = getTime();
 	/* code to be measured goes here */
