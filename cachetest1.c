@@ -62,8 +62,10 @@ int main (int argc, char *argv[])
 	/* initialise arrray elements */
 	
 	int x, y, bx, by;
-	
+	int j;
+
 	int b[N];
+
 	for(i = 0; i < N; i++) {
 		a[i] = b[i] = i;
 	}	
@@ -77,23 +79,19 @@ int main (int argc, char *argv[])
 
 	}
 
-/*	for(i = 0; i < N; i++) {
-		printf("%d ", b[i]);
-
-	}*/	
-
-	
 
 	t1 = getTime();
 	/* code to be measured goes here */
 	/***************************************/
 
-	for(i = 0; i < N; i++) {
-		a[b[i]] * 9;
-		/*printf("%d ", a[b[i]]);*/
+	for(i = 0; i < M; i++){
+	
+		for(j = 0; j < N; j++) {
+			a[b[j]] * 9;
+			/*printf("%d ", a[b[j]]);*/
+		}
 
 	}
-
 
 
 	/***************************************/
