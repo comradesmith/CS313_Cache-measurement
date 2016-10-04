@@ -1,15 +1,15 @@
- OPT = -O1 				
+OPT = -O1 				
 
-default: assignment
+default: cachetest1
 
-assignment: assignment.o 
-	gcc $(OPT) -o assignment assignment.o
+cachestest1: cachetest1.o 
+	gcc $(OPT) -o cachestest1.out cachestest1.o
 
-assignment.o: assignment.c
-	gcc $(OPT) -c assignment.c
+cachestest1.o: cachestest1.c
+	gcc $(OPT) -c cachestest1.c
 
 
 clean:
 	rm -f *.o
-	rm -f assignment
+	rm -f cachestest1
 
