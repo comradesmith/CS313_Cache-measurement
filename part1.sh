@@ -2,6 +2,10 @@
 
 m=8192
 
+make clean
+make
+rm -f *.data
+
 echo "Part1 test with M of" $m >> part1.data
 
 for i in `seq 10 20`;
@@ -12,3 +16,5 @@ do
 	./cachetest2.out --repetitions $m --array_size $x | grep time >> part1.data
 
 done
+
+make clean
