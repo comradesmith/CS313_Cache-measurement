@@ -65,6 +65,8 @@ int main (int argc, char *argv[])
 	int j;
 
 	int b[N];
+	
+	unsigned int sum;
 
 	for(i = 0; i < N; i++) {
 		a[i] = b[i] = i;
@@ -76,12 +78,11 @@ int main (int argc, char *argv[])
 	/***************************************/
 
 	for(i = 0; i < M; i++){
-	
+	/* for M repetitions */
+		sum = 0;	
 		for(j = 0; j < N; j++) {
-			a[b[j]] * 9;
-			/*printf("%d ", a[b[j]]);*/
+			sum += a[b[j]];
 		}
-
 	}
 
 
@@ -89,7 +90,10 @@ int main (int argc, char *argv[])
 	t2 = getTime(); 
 	
 	/* output; examples, adjust for task */
-	printf("time: %6.2f secs\n",(t2 - t1));
+	//printf("time:\t%6.9f secs\n",(t2 - t1));
+	printf("time:\t%6.f ns\n", (t2 - t1)*1000000000);
+	printf("sum: %u\n", sum);
+
 
 	/* free memory; examples, adjust for task */
 	//free(a);
