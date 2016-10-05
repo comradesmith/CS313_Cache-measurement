@@ -100,9 +100,9 @@ int main (int argc, char *argv[])
 	t2 = getTime(); 
 	
 	/* output; examples, adjust for task */
-	//printf("time:\t%6.9f secs\n",(t2 - t1));
-	printf("time:\t%6.f ns\n", (t2 - t1)*1000000000);
-	printf("sum: %u\n", sum);
+	printf("time:\t%6.4f secs\n",(t2 - t1));
+	//printf("time:\t%6.f ns\n", (t2 - t1) * 1000000000);
+	printf("sum: \t%u\n", sum);
 	
 	/* free memory; examples, adjust for task */
 	//free(a);

@@ -16,6 +16,7 @@ cachetest2.o: cachetest2.c
 
 clean:
 	rm -f *.o
+	rm -f *.data
 	rm -f cachetest1.out
 	rm -f cachetest2.out
 
