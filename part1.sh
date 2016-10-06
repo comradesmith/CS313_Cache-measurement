@@ -1,14 +1,21 @@
 #!/bin/sh
 
-m=8192
+if [ $# -ne 3 ]
+	then echo not enough args
+	exit 1;
+fi
 
-make clean
-make
-rm -f *.data
+m=$1
+start=$2
+end=$3
+
+make clean >> /dev/null
+make >> /dev/null
+rm -f *.data >> /dev/null
 
 echo "Part1 test with M of" $m >> part1.data
 
-for i in `seq 10 20`;
+for i in `seq $start $end`;
 do
 	x=$(echo 2^$i | bc)
 	echo "n=" $x >> part1.data 
@@ -17,4 +24,4 @@ do
 
 done
 
-make clean
+make clean >> /dev/null
