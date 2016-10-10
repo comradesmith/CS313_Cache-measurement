@@ -1,0 +1,46 @@
+Part1 test with M of 1000
+n= 1024
+time:	0.0005 secs
+time:	0.0005 secs
+n= 2048
+time:	0.0010 secs
+time:	0.0010 secs
+n= 4096
+time:	0.0018 secs
+time:	0.0019 secs
+n= 8192
+time:	0.0041 secs
+time:	0.0039 secs
+n= 16384
+time:	0.0078 secs
+time:	0.0091 secs
+n= 32768
+time:	0.0137 secs
+time:	0.0203 secs
+n= 65536
+time:	0.0275 secs
+time:	0.0564 secs
+n= 131072
+time:	0.0540 secs
+time:	0.1486 secs
+n= 262144
+time:	0.1066 secs
+time:	0.3311 secs
+n= 524288
+time:	0.2168 secs
+time:	0.6982 secs
+n= 1048576
+time:	0.4643 secs
+time:	2.2063 secs
+n= 2097152
+time:	1.0096 secs
+time:	7.6077 secs
+n= 4194304
+time:	2.3981 secs
+time:	28.2482 secs
+n= 8388608
+time:	5.5145 secs
+time:	73.4966 secs
+n= 16777216
+time:	10.2229 secs
+time:	159.1908 secs

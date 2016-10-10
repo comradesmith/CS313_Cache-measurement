@@ -2,4 +2,6 @@
 *.swp
 *.o
 __pycache__
-*.data
+.data
+.__afs*
+.~lock*

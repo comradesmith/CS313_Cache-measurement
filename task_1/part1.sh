@@ -14,7 +14,7 @@ end=$3
 
 make clean >> /dev/null
 make >> /dev/null
-rm -f *.data >> /dev/null
+rm -f part1.data >> /dev/null
 
 echo "Part1 test with M of" $m >> part1.data
 
