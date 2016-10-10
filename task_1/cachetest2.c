@@ -35,6 +35,7 @@ int main (int argc, char *argv[])
 	
 	/* declare variables; examples, adjust for task */
 	int *a;
+	int *b;
 	//double	a[100];
  
 	
@@ -58,19 +59,28 @@ int main (int argc, char *argv[])
 		
 	/* allocate memory for arrays; examples, adjust for task */
 	a = malloc (N * sizeof(int));
-
+	b = malloc (N * sizeof(int));
+	
 	/* initialise arrray elements */
 	
 	int x, y, bx, by;
 	int j;
 
-	int b[N];
-	
 	unsigned int sum;
 
 	for(i = 0; i < N; i++) {
 		a[i] = b[i] = i;
 	}	
+
+	for(i = 0; i < 3*N; i++) {
+		x = rand() % N;
+		y = rand() % N;
+		if (x != y){
+			b[x] = b[x] ^ b[y];
+			b[y] = b[x] ^ b[y];
+			b[x] = b[y] ^ b[x];
+		}
+	}
 
 
 	t1 = getTime();
@@ -78,8 +88,8 @@ int main (int argc, char *argv[])
 	/***************************************/
 
 	for(i = 0; i < M; i++){
-	/* for M repetitions */
-		sum = 0;	
+	/* for M repetitions */	
+		sum = 0;
 		for(j = 0; j < N; j++) {
 			sum += a[b[j]];
 		}
@@ -93,8 +103,7 @@ int main (int argc, char *argv[])
 	printf("time:\t%6.4f secs\n",(t2 - t1));
 	//printf("time:\t%6.f ns\n", (t2 - t1) * 1000000000);
 	printf("sum: \t%u\n", sum);
-
-
+	
 	/* free memory; examples, adjust for task */
 	//free(a);
 

@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# usage: part1.sh $repetitions $x $y
+# where 2 to the power of x through y are the values of array size to test.
+
 if [ $# -ne 3 ]
 	then echo not enough args
 	exit 1;
