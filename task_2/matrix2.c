@@ -55,10 +55,10 @@ int main(int argc, char **argv)
 		a[i] = b[i]  = (double)(rand() % 255);
 	}
 
-//	print_matrix(a, n);
-//	printf("\n");
-//	print_matrix(b, n);
-//	printf("\n");
+	print_matrix(a, n);
+	printf("\n");
+	print_matrix(b, n);
+	printf("\n");
 
 	t1 = getTime();
 	/*  BEGIN TIMER  */
@@ -68,7 +68,6 @@ int main(int argc, char **argv)
 		for(j = 0; j < n; j++){
 			for(k = 0; k < n; k++){
 				d[j * n + k] = b[k * n + j]; 
-				d[k * n + j] = b[j * n + k];
 			}
 		}
 		compute(a, d, c, n);
@@ -76,8 +75,8 @@ int main(int argc, char **argv)
 	/* END TIMER */
 	t2 = getTime();
 
-//	print_matrix(c, n);
-//	printf("success with a value of %u\n", n);
+	print_matrix(c, n);
+	printf("success with a value of %u\n", n);
 
 
 	printf("time:\t%6.4f secs\n",(t2 - t1));
@@ -94,7 +93,7 @@ void compute(double* a, double* b, double* c, int n)
 		for(j = 0; j < n; j++){
 			sum = 0;
 			for(k = 0; k < n; k++){
-				sum += a[(i * n) + k] * b[(k * n) + j];
+				sum += a[(i * n) + k] * b[(j * n) + k];
 			};
 			c[i * n + j] = sum;
 		};
