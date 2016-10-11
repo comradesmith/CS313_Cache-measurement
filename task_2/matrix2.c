@@ -16,7 +16,6 @@ int main(int argc, char **argv)
 	double t1, t2;
 	
 	n = 1000;
-	m = 1;
 	for (i = 1; i < (unsigned) argc; i++) {
 		if (strcmp(argv[i], "--n") == 0 ) {
 			i++;

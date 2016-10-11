@@ -81,14 +81,14 @@ void compute(double* a, double* b, double* c, int n)
 	int i, j, k;
 	double sum;
 
-	for(i = 0; i < n; i++){
+	for(k = 0; k < n; k++){
 		
-		for(j = 0; j < n; j++){
-			sum = 0;
-			for(k = 0; k < n; k++){
-				sum += a[(i * n) + k] * b[(k * n) + j];
+		for(i = 0; i < n; i++){
+			for(j = 0; j < n; j++){
+				c[i * n + j] += a[(i * n) + k] * b[(k * n) + j];
+		//		printf("%f\n", sum);
+		//		printf("%d %d %d\n", i, j, k);
 			};
-			c[i * n + j] = sum;
 		};
 	};
 }
