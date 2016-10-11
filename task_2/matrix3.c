@@ -79,7 +79,6 @@ void compute(double* a, double* b, double* c, int n)
 {
 	
 	int i, j, k;
-	double sum;
 
 	for(k = 0; k < n; k++){
 		
