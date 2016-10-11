@@ -11,11 +11,12 @@ void print_matrix(double* x, int n);
 
 int main(int argc, char **argv)
 {
-	int i;
+	int i, j, k;
 	unsigned int n, m;
 	double t1, t2;
 	
 	n = 1000;
+	m = 1;
 	for (i = 1; i < (unsigned) argc; i++) {
 		if (strcmp(argv[i], "--n") == 0 ) {
 			i++;
@@ -42,10 +43,11 @@ int main(int argc, char **argv)
 
 	double x;
 
-	double *a, *b, *c;
+	double *a, *b, *c, *d;
 	a = malloc(n * n * sizeof(double));
 	b = malloc(n * n * sizeof(double));
 	c = malloc(n * n * sizeof(double));
+	d = malloc(n * n * sizeof(double));
 	
 //	test();
 
@@ -61,14 +63,21 @@ int main(int argc, char **argv)
 	t1 = getTime();
 	/*  BEGIN TIMER  */
 
-	for(i =0; i < m; i++){
-		compute(a, b, c, n);
+	for(i = 0; i < m; i++){
+
+		for(j = 0; j < n; j++){
+			for(k = 0; k < n; k++){
+				d[j * n + k] = b[k * n + j]; 
+				d[k * n + j] = b[j * n + k];
+			}
+		}
+		compute(a, d, c, n);
 	}
 	/* END TIMER */
 	t2 = getTime();
 
 //	print_matrix(c, n);
-	printf("success with a value of %u\n", n);
+//	printf("success with a value of %u\n", n);
 
 
 	printf("time:\t%6.4f secs\n",(t2 - t1));

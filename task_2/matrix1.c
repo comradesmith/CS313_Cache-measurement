@@ -69,7 +69,7 @@ int main(int argc, char **argv)
 	t2 = getTime();
 
 //	print_matrix(c, n);
-	printf("success with a value of %u\n", n);
+//	printf("success with a value of %u\n", n);
 
 
 	printf("time:\t%6.4f secs\n",(t2 - t1));
