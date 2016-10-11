@@ -55,10 +55,10 @@ int main(int argc, char **argv)
 		c[i] = 0;
 	}
 
-//	print_matrix(a, n);
-//	printf("\n");
-//	print_matrix(b, n);
-//	printf("\n");
+	print_matrix(a, n);
+	printf("\n");
+	print_matrix(b, n);
+	printf("\n");
 
 	t1 = getTime();
 	/*  BEGIN TIMER  */
@@ -69,8 +69,8 @@ int main(int argc, char **argv)
 	/* END TIMER */
 	t2 = getTime();
 
-//	print_matrix(c, n);
-//	printf("success with a value of %u\n", n);
+	print_matrix(c, n);
+	printf("success with a value of %u\n", n);
 
 
 	printf("time:\t%6.4f secs\n",(t2 - t1));
@@ -79,17 +79,52 @@ int main(int argc, char **argv)
 void compute(double* a, double* b, double* c, int n)
 {
 	
-	int i, j, k;
+	int row, col, blocks, block_size;
+	int crow, ccol;
+	int ci, cj;
+	int i, j, k, x, y, ak, bk;
+	double sum;
 
-	for(k = 0; k < n; k++){
-		for(i = 0; i < n; i++){
-			for(j = 0; j < n; j++){
-				c[i * n + j] += a[(i * n) + k] * b[(k * n) + j];
-		//		printf("%f\n", sum);
-		//		printf("%d %d %d\n", i, j, k);
-			};
-		};
-	};
+	block_size = 4 / 2;
+	blocks = 2;
+	row = col = 0;
+
+	// FIX ME
+	// This is groping in the dark
+
+	for(crow = 0; crow < blocks; crow++){
+	for(ccol = 0; ccol < blocks; ccol++){
+	for(i = 0; i < blocks; i++){
+		ci = crow * block_size;
+		for(j = 0; j < blocks; j++){
+			cj = ccol * block_size;
+			for(col = 0; col < blocks; col++){
+			for(row = 0; row < blocks; row++){
+				sum = 0;
+				for(k = 0; k < blocks; k++){
+					x = col * block_size + i;
+					y = row * block_size + j;
+					ak = row * block_size + k;
+					bk = col * block_size + k;
+					sum += a[(x * n) + ak] * b[(bk * n) + y];
+				}
+				c[ci * n + cj] += sum;
+				
+				ci++;
+				sum = 0;
+				for(k = 0; k < blocks; k++){
+					x = col * block_size + i;
+					y = row * block_size + j;
+					ak = row * block_size + k;
+					bk = col * block_size + k;
+					sum += a[(x * n) + ak] * b[(bk * n) + y];
+				}
+				c[ci * n + cj] += sum;
+				ci--;				
+			}}
+		}
+	}
+	}}
 }
 
 double getTime(){

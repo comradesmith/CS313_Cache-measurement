@@ -54,10 +54,10 @@ int main(int argc, char **argv)
 		a[i] = b[i]  = (double)(rand() % 255);
 	}
 
-//	print_matrix(a, n);
-//	printf("\n");
-//	print_matrix(b, n);
-//	printf("\n");
+	print_matrix(a, n);
+	printf("\n");
+	print_matrix(b, n);
+	printf("\n");
 
 	t1 = getTime();
 	/*  BEGIN TIMER  */
@@ -68,8 +68,8 @@ int main(int argc, char **argv)
 	/* END TIMER */
 	t2 = getTime();
 
-//	print_matrix(c, n);
-//	printf("success with a value of %u\n", n);
+	print_matrix(c, n);
+	printf("success with a value of %u\n", n);
 
 
 	printf("time:\t%6.4f secs\n",(t2 - t1));
