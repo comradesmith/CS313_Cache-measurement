@@ -7,7 +7,7 @@ Intel(R) Core(TM) i7-4770S CPU @ 3.10GHz
 Level 1 Cache: 8192 KB
 Level 2 Cache: 32	KB
 Level 3 Cache: 1 	MB
-*note, this is 1 MB per core, this CPU has 'smart cache' meaning that these L2 and L3 caches are
+*note, this is 1 MB per core, this CPU has 'smart cache' meaning that these L3 caches are
 shared between 8 cores.*
 
 ## Results
