@@ -1,4 +1,4 @@
-Part2 test with m, n of : 1 2000
-martix1 time: 20.8599 secs
-matrix2 time: 9.5228 secs
-matrix3 time: 0.0000 secs
+Part2 test with m, n of : 1 1000
+martix1 time: 1.1211 secs
+matrix2 time: 0.8848 secs
+matrix3

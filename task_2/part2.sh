@@ -3,7 +3,7 @@
 # usage: part2.sh $repetitions $n
 
 if [ $# -ne 2 ]
-	then echo "usage: part2.sh $repetitions $n"
+	then echo usage: part2.sh repetitions n
 	exit 1;
 fi
 

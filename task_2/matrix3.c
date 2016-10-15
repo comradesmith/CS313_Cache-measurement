@@ -78,53 +78,29 @@ int main(int argc, char **argv)
 
 void compute(double* a, double* b, double* c, int n)
 {
+	double* res_a;
+	double* res_b;
+	double* res_c;	
 	
 	int row, col, blocks, block_size;
 	int crow, ccol;
-	int ci, cj;
-	int i, j, k, x, y, ak, bk;
+	int i, j, k, i2, j2, k2;
 	double sum;
 
-	block_size = 4 / 2;
-	blocks = 2;
-	row = col = 0;
+	block_size = 32 / sizeof(double);
+	printf("%d\n\n", block_size);
 
-	// FIX ME
-	// This is groping in the dark
+	for (i = 0; i < n; i += block_size)
+		for (j = 0; j < n; j += block_size)
+			for(k = 0; k < n; k += block_size)
+				for (i2 = 0, res_c = &c[i * n + j],
+					res_a = &a[i * n + j]; i2 < block_size;
+					++i2, res_c += n, res_a +=n)
+					for (k2 = 0, res_b = &b[i * n + j];
+						k2 < block_size; k2++, res_b += n)
+						for (j2 = 0; j2 < block_size; j2++)
+							res_c[j2] += res_a[k2] * res_b[j2];
 
-	for(crow = 0; crow < blocks; crow++){
-	for(ccol = 0; ccol < blocks; ccol++){
-	for(i = 0; i < blocks; i++){
-		ci = crow * block_size;
-		for(j = 0; j < blocks; j++){
-			cj = ccol * block_size;
-			for(col = 0; col < blocks; col++){
-			for(row = 0; row < blocks; row++){
-				sum = 0;
-				for(k = 0; k < blocks; k++){
-					x = col * block_size + i;
-					y = row * block_size + j;
-					ak = row * block_size + k;
-					bk = col * block_size + k;
-					sum += a[(x * n) + ak] * b[(bk * n) + y];
-				}
-				c[ci * n + cj] += sum;
-				
-				ci++;
-				sum = 0;
-				for(k = 0; k < blocks; k++){
-					x = col * block_size + i;
-					y = row * block_size + j;
-					ak = row * block_size + k;
-					bk = col * block_size + k;
-					sum += a[(x * n) + ak] * b[(bk * n) + y];
-				}
-				c[ci * n + cj] += sum;
-				ci--;				
-			}}
-		}
-	}
-	}}
 }
 
 double getTime(){
@@ -183,7 +159,6 @@ void test()
 	compute(x, y, z, 3);
 	print_matrix(z, 3);
 	printf("\n\n");
-
 
 
 }
