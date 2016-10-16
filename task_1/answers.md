@@ -1,3 +1,5 @@
+\newpage
+
 # Part 1
 
 ### Processor details
@@ -10,7 +12,7 @@ Level 3 Cache: 1 	MB
 *note, this is 1 MB per core, this CPU has 'smart cache' meaning that these L3 caches are
 shared between 8 cores.*
 
-## Results
+### Results
 
 |N          |size of a  |Case 1     |Case 2     |
 |-----------|-----------|-----------|-----------|
@@ -38,6 +40,8 @@ shared between 8 cores.*
 
 **Linear**
 
+The linear implementation behaved as expected, the time increased linearly and the time per
+iteration remained constant. This implementation has a time complexity of O(N).
 
 **Random**
 
@@ -50,5 +54,6 @@ ranges of the L3 caches.
 The range between 1mb and 8mb is a range of incredibly sharp rise in time. As we go past the 
 8mb point as diminishing portion of the data is able to be contained in cache of any kind, 
 and once the majority is stored in ram we see a flatter increase in time per iteration.
+
 
 

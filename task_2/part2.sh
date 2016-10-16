@@ -20,3 +20,4 @@ echo "Part2 test with m, n of :" $m $n >> part2.data
 echo "martix1" `./matrix1.out --repetitions $m --n $n | grep time` >> part2.data
 echo "matrix2" `./matrix2.out --repetitions $m --n $n | grep time` >> part2.data
 echo "matrix3" `./matrix3.out --repetitions $m --n $n | grep time` >> part2.data
+echo "matrix4" `./matrix4.out --repetitions $m --n $n | grep time` >> part2.data

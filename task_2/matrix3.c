@@ -80,19 +80,12 @@ void compute(double* a, double* b, double* c, int n)
 {
 	int bsize = 64 / sizeof(double);
 
-	int i, j, k, kk, jj, prefetch;
-	int prefetch_amt = 4;
+	int i, j, k, kk, jj;
 	double sum;
 
 	for (kk = 0; kk < n; kk += bsize) {
 		for (jj = 0; jj < n; jj += bsize) {
 			for (i = 0; i < n; i++) {
-				/*if (i + 64 * prefetch_amt < n){
-					for (prefetch = 64; prefetch < prefetch_amt * 64; prefetch += 64){
-						a[i * n + prefetch] += 1;
-						a[i * n + prefetch] -= 1;
-					}
-				}*/
 				for (j = jj; j < jj + bsize; j++) {
 					sum = c[i * n + j];
 					for (k = kk; k < kk + bsize; k++) {
