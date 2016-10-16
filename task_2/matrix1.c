@@ -50,6 +50,7 @@ int main(int argc, char **argv)
 	
 //	test();
 
+	srand(0xC0FFEE);
 	for(i = 0; i < n * n; i++){
 		a[i] = b[i]  = (double)(rand() % 255);
 	}
@@ -82,7 +83,6 @@ void compute(double* a, double* b, double* c, int n)
 	double sum;
 
 	for(i = 0; i < n; i++){
-		
 		for(j = 0; j < n; j++){
 			sum = 0;
 			for(k = 0; k < n; k++){

@@ -49,10 +49,10 @@ int main(int argc, char **argv)
 	c = malloc(n * n * sizeof(double));
 	
 //	test();
+
 	srand(0xC0FFEE);
 	for(i = 0; i < n * n; i++){
 		a[i] = b[i]  = (double)(rand() % 255);
-		c[i] = 0;
 	}
 
 	print_matrix(a, n);
@@ -78,32 +78,19 @@ int main(int argc, char **argv)
 
 void compute(double* a, double* b, double* c, int n)
 {
-	int bsize = 64 / sizeof(double);
-
-	int i, j, k, kk, jj, prefetch;
-	int prefetch_amt = 4;
+	
+	int i, j, k;
 	double sum;
 
-	for (kk = 0; kk < n; kk += bsize) {
-		for (jj = 0; jj < n; jj += bsize) {
-			for (i = 0; i < n; i++) {
-				/*if (i + 64 * prefetch_amt < n){
-					for (prefetch = 64; prefetch < prefetch_amt * 64; prefetch += 64){
-						a[i * n + prefetch] += 1;
-						a[i * n + prefetch] -= 1;
-					}
-				}*/
-				for (j = jj; j < jj + bsize; j++) {
-					sum = c[i * n + j];
-					for (k = kk; k < kk + bsize; k++) {
-						sum += a[i * n + k] * b[k * n + j];
-					}
-					c[i * n + j] = sum;
-				}
-			}
-		}
-	}
-
+	for(k = 0; k < n; k++){
+		for(j = 0; j < n; j++){
+			sum = 0;
+			for(i = 0; i < n; i++){
+				sum += a[(i * n) + k] * b[(k * n) + j];
+			};
+			c[i * n + j] = sum;
+		};
+	};
 }
 
 double getTime(){
@@ -162,6 +149,7 @@ void test()
 	compute(x, y, z, 3);
 	print_matrix(z, 3);
 	printf("\n\n");
+
 
 
 }

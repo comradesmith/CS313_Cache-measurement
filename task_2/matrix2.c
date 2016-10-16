@@ -51,6 +51,7 @@ int main(int argc, char **argv)
 	
 //	test();
 
+	srand(0xC0FFEE);
 	for(i = 0; i < n * n; i++){
 		a[i] = b[i]  = (double)(rand() % 255);
 	}
