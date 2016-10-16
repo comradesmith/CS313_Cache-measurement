@@ -78,28 +78,31 @@ int main(int argc, char **argv)
 
 void compute(double* a, double* b, double* c, int n)
 {
-	double* res_a;
-	double* res_b;
-	double* res_c;	
-	
-	int row, col, blocks, block_size;
-	int crow, ccol;
-	int i, j, k, i2, j2, k2;
+	int bsize = 64 / sizeof(double);
+
+	int i, j, k, kk, jj, prefetch;
+	int prefetch_amt = 4;
 	double sum;
 
-	block_size = 32 / sizeof(double);
-	printf("%d\n\n", block_size);
-
-	for (i = 0; i < n; i += block_size)
-		for (j = 0; j < n; j += block_size)
-			for(k = 0; k < n; k += block_size)
-				for (i2 = 0, res_c = &c[i * n + j],
-					res_a = &a[i * n + j]; i2 < block_size;
-					++i2, res_c += n, res_a +=n)
-					for (k2 = 0, res_b = &b[i * n + j];
-						k2 < block_size; k2++, res_b += n)
-						for (j2 = 0; j2 < block_size; j2++)
-							res_c[j2] += res_a[k2] * res_b[j2];
+	for (kk = 0; kk < n; kk += bsize) {
+		for (jj = 0; jj < n; jj += bsize) {
+			for (i = 0; i < n; i++) {
+				/*if (i + 64 * prefetch_amt < n){
+					for (prefetch = 64; prefetch < prefetch_amt * 64; prefetch += 64){
+						a[i * n + prefetch] += 1;
+						a[i * n + prefetch] -= 1;
+					}
+				}*/
+				for (j = jj; j < jj + bsize; j++) {
+					sum = c[i * n + j];
+					for (k = kk; k < kk + bsize; k++) {
+						sum += a[i * n + k] * b[k * n + j];
+					}
+					c[i * n + j] = sum;
+				}
+			}
+		}
+	}
 
 }
 
