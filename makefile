@@ -10,7 +10,7 @@ staging: staging/assignment3_answer.pdf
 	mkdir staging/task_2
 	cp task_1/cachetest1.c staging/task_1/
 	cp task_1/cachetest2.c staging/task_1/
-	cp task_2/makefile staging/task_1/
+	cp task_1/makefile staging/task_1/
 	cp task_2/matrix1.c staging/task_2/
 	cp task_2/matrix2.c staging/task_2/
 	cp task_2/matrix3.c staging/task_2/
